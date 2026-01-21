@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 
 // 3. กำหนดพอร์ต (เลขที่เซิร์ฟเวอร์จะเปิด)
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // 4. สั่งให้แอป "เข้าใจ JSON"
 app.use(express.json());
