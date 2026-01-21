@@ -32,7 +32,7 @@ const inputName = ref('')
 const loading = ref(false)
 const error = ref('')
 
-// ฟังก์ชันดึงข้อมูลfv 
+// ฟังก์ชันดึงข้อมูล
 async function fetchHello() {
   reset()
   loading.value = true
@@ -42,7 +42,7 @@ async function fetchHello() {
     const data = await res.json()
     helloMessage.value = data.message
   } catch (err) {
-    error.value = '❌ ไม่สามารถเชื่อมต่อกับ backend ได้'
+    error.value = '❌ ไม่สามารถเชื่อมต่อกับ backend ได้ backend อาจอยู่ในโหมด sleep'
   }
   loading.value = false
 }
