@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 
 // 5. สร้าง endpoint GET: เมื่อเรียก /api/hello → ส่ง JSON กลับ
 app.get('/api/hello', (req, res) => {
-  res.json({ message: "สวัสดีจาก backend!" });
+  res.json({ message: "backend ทำงานได้" });
 });
 
 // 6. สร้าง endpoint POST: รับชื่อ → ส่งกลับข้อความทักทาย

@@ -1,9 +1,10 @@
 <template>
+  <div class="card bg-primary text-white">
   <div style="padding: 20px; font-family: sans-serif">
     <h1>ทดสอบเชื่อมกับ Backend</h1>
     
     <!-- ปุ่มดึงข้อมูล -->
-    <button @click="fetchHello">โหลดข้อความจาก Backend</button>
+    <button @click="fetchHello">ตรวจสอบ Backend</button>
     <p v-if="helloMessage">💬 {{ helloMessage }}</p>
 
     <!-- ช่องส่งชื่อ -->
@@ -14,7 +15,8 @@
     </div>
 
     <p v-if="loading">กำลังโหลด...</p>
-    <p v-if="error" style="color: red">⚠️ {{ error }}</p>
+    <p v-if="error" style="color: red">{{ error }}</p>
+  </div>
   </div>
 </template>
 
@@ -32,7 +34,7 @@ async function fetchHello() {
   loading.value = true
   try {
     // เรียก backend ผ่าน fetch
-    const res = await fetch('http://localhost:3001/api/hello')
+    const res = await fetch('https://test-backend-nuxt-1.onrender.com/api/hello')
     const data = await res.json()
     helloMessage.value = data.message
   } catch (err) {
@@ -50,7 +52,7 @@ async function sendName() {
   }
   loading.value = true
   try {
-    const res = await fetch('http://localhost:3001/api/greet', {
+    const res = await fetch('https://test-backend-nuxt-1.onrender.com/api/greet', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: inputName.value })
@@ -73,4 +75,18 @@ function reset() {
   greetMessage.value = ''
   error.value = ''
 }
+
+useHead({
+  link: [
+    {
+    rel:"stylesheet",
+    href:"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    }
+  ],
+  script:[
+    {
+      src:"https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    }
+  ]
+})
 </script>
