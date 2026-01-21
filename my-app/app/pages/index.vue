@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-center align-items-center vh-100 p-2">
     <div class="card bg-primary text-white p-2">
          <div style="padding: 20px; font-family: sans-serif ">
-           <h1>ทดสอบเชื่อมกับ Backend</h1>
+           <h1>ทดสอบเชื่อมกับBackend</h1>
            
            <!-- ปุ่มดึงข้อมูล -->
            <button class="rounded" @click="fetchHello">ตรวจสอบ Backend</button>
