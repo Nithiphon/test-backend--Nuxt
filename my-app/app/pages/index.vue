@@ -1,22 +1,26 @@
 <template>
-  <div class="card bg-primary text-white">
-  <div style="padding: 20px; font-family: sans-serif">
-    <h1>ทดสอบเชื่อมกับ Backend</h1>
-    
-    <!-- ปุ่มดึงข้อมูล -->
-    <button @click="fetchHello">ตรวจสอบ Backend</button>
-    <p v-if="helloMessage">💬 {{ helloMessage }}</p>
-
-    <!-- ช่องส่งชื่อ -->
-    <div style="margin-top: 30px">
-      <input v-model="inputName" placeholder="พิมพ์ชื่อของคุณ" />
-      <button @click="sendName" :disabled="loading">ส่งชื่อไป Backend</button>
-      <p v-if="greetMessage">🎉 {{ greetMessage }}</p>
+  <div class="d-flex justify-content-center align-items-center vh-100 p-2">
+    <div class="card bg-primary text-white p-2">
+         <div style="padding: 20px; font-family: sans-serif ">
+           <h1>ทดสอบเชื่อมกับ Backend</h1>
+           
+           <!-- ปุ่มดึงข้อมูล -->
+           <button class="rounded" @click="fetchHello">ตรวจสอบ Backend</button>
+           <p v-if="helloMessage">{{ helloMessage }}</p>
+       
+           <!-- ช่องส่งชื่อ -->
+           <div style="margin-top: 30px" class="px-3 ">
+             <input class="col-6 me-3" v-model="inputName" placeholder="พิมพ์ชื่อของคุณ" />
+             <button class="px-3  mt-1 p-1 rounded"  @click="sendName" :disabled="loading">ส่งชื่อไป Backend</button>
+             <div class="card  mt-4">
+             <p v-if="greetMessage"> {{ greetMessage }}</p>
+             </div>
+           </div>
+       
+           <p v-if="loading">กำลังโหลด...</p>
+           <p v-if="error" style="color: red">{{ error }}</p>
+         </div>
     </div>
-
-    <p v-if="loading">กำลังโหลด...</p>
-    <p v-if="error" style="color: red">{{ error }}</p>
-  </div>
   </div>
 </template>
 
@@ -28,7 +32,7 @@ const inputName = ref('')
 const loading = ref(false)
 const error = ref('')
 
-// ฟังก์ชันดึงข้อมูล
+// ฟังก์ชันดึงข้อมูลfv 
 async function fetchHello() {
   reset()
   loading.value = true
