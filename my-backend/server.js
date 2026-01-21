@@ -10,10 +10,19 @@ const PORT = process.env.PORT || 3001;
 // 4. สั่งให้แอป "เข้าใจ JSON"
 app.use(express.json());
 
-// อนุญาตให้ Nuxt (localhost:3000) เรียก API ได้
+
+// อนุญาตหลาย origins
+const allowedOrigins = [
+  'http://localhost:3000',          
+  'https://test-backend-nuxt.vercel.app/',      
+  'https://your-nuxt-app.pages.dev'  
+];
+
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Origin', 'https://test-backend-nuxt.vercel.app/');
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
