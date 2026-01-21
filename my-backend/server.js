@@ -14,8 +14,8 @@ app.use(express.json());
 // อนุญาตหลาย origins
 const allowedOrigins = [
   'http://localhost:3000',          
-  'https://test-backend-nuxt.vercel.app/',      
-  'https://your-nuxt-app.pages.dev'  
+  'https://test-backend-nuxt.vercel.app',
+  'https://your-nuxt-app.pages.dev'
 ];
 
 app.use((req, res, next) => {
